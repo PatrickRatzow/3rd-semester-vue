@@ -6,9 +6,9 @@
        role="navigation" aria-label="main navigation">
       <div class="container">
           <div class="navbar-brand">
-              <a class="navbar-item" href="/">
+              <router-link to="/" class="navbar-item">
                   <img src="https://www.ucn.dk/Files/Templates/Designs/ucn2015/img/ucnlogo.svg" width="75">
-              </a>
+              </router-link>
               <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar">
                   <span aria-hidden="true"></span>
                   <span aria-hidden="true"></span>
