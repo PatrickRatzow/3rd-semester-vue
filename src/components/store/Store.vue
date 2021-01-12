@@ -21,12 +21,12 @@
 </template>
 
 <script>
-export default {
-  props: {
-    city: String,
-    address: String,
-    image: String,
-    description: String
+  export default {
+    props: {
+      city: String,
+      address: String,
+      image: String,
+      description: String
+    }
   }
-}
 </script>

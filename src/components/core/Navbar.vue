@@ -41,70 +41,69 @@
 </template>
 
 <script>
-export default {
-    data() {
+    export default {
+      data() {
         return {
-            hasScrolled: false
+          hasScrolled: false
         }
-    },
-    methods: {
+      },
+      methods: {
         setupNavbarBurger() {
-            const navbarBurger = document.querySelectorAll('.navbar-burger')[0]
-            if (navbarBurger === undefined)
-                return;
+          const navbarBurger = document.querySelectorAll('.navbar-burger')[0]
+          if (navbarBurger === undefined)
+            return;
 
-            navbarBurger.addEventListener("click", () => {
-                const target = navbarBurger.dataset.target;
-                const targetNode = document.getElementById(target);
-                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-                navbarBurger.classList.toggle('is-active');
-                targetNode.classList.toggle('is-active');
-            })
+          navbarBurger.addEventListener("click", () => {
+            const target = navbarBurger.dataset.target;
+            const targetNode = document.getElementById(target);
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            navbarBurger.classList.toggle('is-active');
+            targetNode.classList.toggle('is-active');
+          })
         },
         hideNavbarShadowOnFrontpage() {
-            console.log(this.$route.path);
             if (this.$route.path === "/") {
-                this.$el.classList.remove("has-shadow");
+              this.$el.classList.remove("has-shadow");
             }
 
             window.onscroll = () => {
-                if (!this.hasScrolled) {
-                    this.hasScrolled = true;
-                }
+              if (!this.hasScrolled) {
+                  this.hasScrolled = true;
+              }
 
-                const content = document.querySelector("#intro");
-                if (content !== null) {
-                    const offset = window.pageYOffset;
-                    const contentHeight = content.offsetHeight;
-                    const navbarHeight = this.$el.offsetHeight;
+              const content = document.querySelector("#intro");
+              if (content !== null) {
+                const offset = window.pageYOffset;
+                const contentHeight = content.offsetHeight;
+                const navbarHeight = this.$el.offsetHeight;
 
-                    if (offset > contentHeight - navbarHeight) {
-                        this.$el.classList.add("has-shadow");
-                    } else {
-                        this.$el.classList.remove("has-shadow");
-                    }
+                if (offset > contentHeight - navbarHeight) {
+                  this.$el.classList.add("has-shadow");
+                } else {
+                  this.$el.classList.remove("has-shadow");
                 }
+              }
             }
         }
-    },
-    mounted() {
+      },
+      mounted() {
         this.setupNavbarBurger();
         this.hideNavbarShadowOnFrontpage();
+      }
     }
-}
 </script>
 
 <style scoped>
-.navbar.front-page {
+  .navbar.front-page {
     position: fixed;
     top: 0;
     right: 0;
     left: 0;
     z-index: 1030;
     transform: translateY(-100%);
-}
-.navbar-scrolled-up {
+  }
+  .navbar-scrolled-up {
     transform: translateY(0) !important;
     transition: transform 0.3s ease-in-out;
-}
+  }
 </style>
